@@ -1,0 +1,52 @@
+{
+  "name": "vastuenergy",
+  "version": "1.0.0",
+  "description": "VastuEnergy",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaydevVadachhak/VastuEnergy.git"
+  },
+  "keywords": [
+    "Vastu",
+    "Aroma",
+    "Therapy",
+    "Aura",
+    "Photography",
+    "Vastu",
+    "Consulting",
+    "Services",
+    "Online",
+    "Astrology",
+    "Consulting",
+    "Services",
+    "Vastu",
+    "For",
+    "Industrial",
+    "Vastu",
+    "For",
+    "Residential",
+    "Numerology",
+    "Distance",
+    "Healing",
+    "Chakra",
+    "Healing"
+  ],
+  "author": "Saharsh Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JaydevVadachhak/VastuEnergy/issues"
+  },
+  "homepage": "https://github.com/JaydevVadachhak/VastuEnergy#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.22"
+  }
+}
