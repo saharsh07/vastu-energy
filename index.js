@@ -1,42 +1,43 @@
 const express = require("express");
 const morgan = require("morgan");
-const { MongoClient, ServerApiVersion } = require("mongodb");
 const mongoose = require("mongoose");
 const app = express();
+const cors = require("cors");
 const PORT = 3000;
 
 require("dotenv/config");
 
+// ! CORS
+app.use(cors());
+app.options("*", cors());
+
+// ! Middleware
 app.use(express.json());
 app.use(morgan("tiny"));
 
+// ! Routes
+const productRouter = require("./router/products");
+const categoryRouter = require("./router/categories");
 const api = process.env.APP_URL;
 
-app.get(`${api}/products`, (req, res) => {
-  const product = {
-    id: 1,
-    name: "Test",
-    image: "img_url_1",
-  };
-  res.send(product);
-});
+app.use(`${api}/products`, productRouter);
+app.use(`${api}/categories`, categoryRouter);
 
-app.post(`${api}/products`, (req, res) => {
-  const newProduct = req.body;
-  res.send(newProduct);
-});
+// ! Connection
+mongoose
+  .connect(process.env.CONNECTION_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: "vastuenergy-dummy",
+  })
+  .then(() => {
+    console.log("Database Connection is ready...");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-const client = new MongoClient(process.env.CONNECTION_STRING, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1,
-});
-client.connect((err) => {
-  const collection = client.db("vastuenergy-db").collection("vastuenergy-db");
-  // perform actions on the collection object
-  client.close();
-});
-
+// ! Server
 app.listen(PORT, () => {
   console.log("listening on PORT 3000");
 });
