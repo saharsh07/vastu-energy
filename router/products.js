@@ -68,7 +68,7 @@ function saveProduct(product, res) {
       res.status(201).json(createdProduct);
     })
     .catch((err) => {
-      res.status(500).json({
+      res.status(400).json({
         hasError: true,
         error: err,
       });
