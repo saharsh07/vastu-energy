@@ -23,13 +23,13 @@ app.use((err, req, res, next) => errorHandler(err, req, res, next));
 const productRouter = require("./router/products");
 const categoryRouter = require("./router/categories");
 const userRouter = require("./router/users");
-// const orderRouter = require("./router/orders");
+const orderRouter = require("./router/orders");
 const api = process.env.APP_URL;
 
 app.use(`${api}/products`, productRouter);
 app.use(`${api}/categories`, categoryRouter);
 app.use(`${api}/users`, userRouter);
-// app.use(`${api}/orders`, orderRouter);
+app.use(`${api}/orders`, orderRouter);
 
 // ! Connection
 mongoose
